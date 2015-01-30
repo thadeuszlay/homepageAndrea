@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Gallerie</title>
+ <style type="text/css">
+</style>
+</head>
+<script src="xaraalbumfuncs.js" ID="Webstyle_Album_Funcs"></script>
+<body   
+   margin: 0;
+   padding: 0;
+   margin: 0;
+   padding: 0;
+   leftmargin="0" topmargin="0" background="../pictures/gallerie.jpg">
+            
+  </tr>
+  <tr valign="top">
+    
+      </tr>
+  <tr valign="top">
+    <td colspan=""> <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="2" valign="top" class="centercoltext"> <p><font color="#FFCC33"><center></center><br><br><br></font></p>
+            <!-- Insert the album here -->		
+            <div ID="xara_albumdisplay">
+              <!-- Define what one cell should look like -->
+              <div Name="xara_albumcelltemplate" ID="xara_albumcelltemplate">
+                <div ID="xara_titleslotnum" ></div>
+              </div>
+              <div Name="xara_albumcelltemplate" ID="xara_albumcelltemplate">
+                <a href="javascript:xara_show(slotnum);"><img src="default_thumb.jpg" alt="Hier klicken, um das Bild zu vergrößern."  hspace=2 vspace=2 border=0 ID="xara_thumbslotnum"></a><br>
+              </div>
+              <div Name="xara_albumcelltemplate" ID="xara_albumcelltemplate">
+                <div ID="xara_captionslotnum"></div>
+              </div>
+              <div Name="xara_albumcelltemplate" ID="xara_albumcelltemplate">
+                <div ID="xara_divider">&nbsp;</div>
+              </div>
+              <noscript>
+              <center>
+                Anscheinend hast du einen Browser, der kein Javascript unterstützt.Du muss schon einen Browser benutzen, der Javascript lesen kann, um die Fotogallerie
+	betrachten zu können.
+              </center>
+              </noscript>
+            </div>
+            <table width="100%">
+              <tr>
+                <td ID="xara_position" class="pagctrls"> </td>
+                <td align=right ID="xara_positionpages"> <a href="javascript:xara_prevpage()" ID="xara_prevpage"><img src="segelboot_2.gif" border=0></a>
+                  |</font> <a href="javascript:xara_nextpage()" ID="xara_nextpage"><img src="segelboot.gif" border=0></a>
+                </td>
+              </tr>
+            </table></td>
+        </tr>
+             </table></td>
+  </tr>
+</table>
+</body>
+<script ID="Webstyle_Template_Init">
+xara_templatesetup(2, 8);
+</script>
+
+<script ID="Webstyle_Album_Script">
+xara_albumsetup("", "Inspiration", "");
+xara_albumcreate(3, 2, -1);
+
+xara_pic('../pictures/_a_back0.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back1.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back2.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back3.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back4.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back5.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back6.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back7.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back8.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back9.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back10.jpg', '', '<font color="#000099">');
+xara_pic('../pictures/_a_back11.jpg', '', '<font color="#000099">');
+xara_albumfill(base);
+</script>
+</html>

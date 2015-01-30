@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Homepage</title>
+</head>
+<body background="gliding.JPG" bgcolor="#000000" text="black" topmargin="0" marginheight="0"  leftmargin="0" marginwidth="0" >
+<center>
+<b><p>Teste dein Reaktionsvermögen!</p>
+Klicke zuerst auf "Start" und warte bis sich die Farbe des Quadrates ändert. Sobald sie sich ändert drücke so schnell wie möglich auf "Stop".
+</b></center>
+<br><br>
+<script language="JavaScript">
+<!--
+
+var startTime=new Date();
+var endTime=new Date();
+var startPressed=false;
+var bgChangeStarted=false;
+var maxWait=20;
+var timerID;
+//)
+
+
+var colors=new Array("tomato","chocolate","limegreen","crimson","darkslategray",
+"aliceblue","mediumslateblue","cornflowerblue","darkorchid","darkkhaki","coral",
+"darkolivegreen","cadetblue")
+
+if (document.all||document.getElementById)
+document.write('<div id="reflex" style="width:150;height:150;border:1px solid black" onClick="stopTest()"></div>')
+
+function startTest()
+{
+        if (document.all)
+        document.all.reflex.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+        else if (document.getElementById)
+	document.getElementById("reflex").style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+        else if (document.layers)
+        document.reflexns.document.reflexns_sub.document.bgColor=colors[Math.floor(Math.random()*colors.length)];
+	bgChangeStarted=true;
+	startTime=new Date();
+}
+
+function remark(responseTime)
+{
+	var responseString="";
+	if (responseTime < 0.25)
+		responseString="Sehr gut!";
+	if (responseTime >= 0.25 && responseTime < 0.30)
+		responseString="Nich schlecht!";
+	if (responseTime >=0.30 && responseTime < 0.40)
+		responseString="Das kannst du besser...";
+	if (responseTime >=0.40 && responseTime < 0.60)
+		responseString="Übe weiter!";
+	if (responseTime >=0.60 && responseTime < 1)
+		responseString="Bist du betrunken? ;-)";
+	if (responseTime >=1)
+		responseString="Andrea, bist du eingeschlafen? ;-)";
+
+	return responseString;
+}
+
+function stopTest()
+{
+	if(bgChangeStarted)
+	{
+		endTime=new Date();
+		var responseTime=(endTime.getTime()-startTime.getTime())/1000;
+                if (document.all)
+		document.all.reflex.style.backgroundColor="white";
+                else if (document.getElementById)
+		document.getElementById("reflex").style.backgroundColor="white";
+                else if (document.layers)
+                document.reflexns.document.reflexns_sub.document.bgColor="white";      
+		alert("Deine Reaktionszeit ist: " + responseTime + " Sekunden " + "\n" + remark(responseTime));
+		startPressed=false;
+		bgChangeStarted=false;
+	}
+	else
+	{
+		if (!startPressed)
+		{
+			alert("press start first to start test");
+		}
+		else
+		{       
+			clearTimeout(timerID);
+			startPressed=false;             
+			alert("Moglerin! ;-) So nicht Andrea! Du hast zu früh gedrückt!");
+		}               
+	}
+}
+
+var randMULTIPLIER=0x015a4e35;
+var randINCREMENT=1;
+var today=new Date();
+var randSeed=today.getSeconds();
+function randNumber()
+{
+	randSeed = (randMULTIPLIER * randSeed + randINCREMENT) % (1 << 31);
+	return((randSeed >> 15) & 0x7fff) / 32767;
+}
+
+function startit()
+{
+	if(startPressed)
+	{
+		alert("Ist bereits gestartet. Drücke Stop, um zu stoppen");
+		return;
+	}
+	else
+	{
+		startPressed=true; 
+		timerID=setTimeout('startTest()', 6000*randNumber());
+	}
+}
+// --> 
+</script>
+
+
+<ilayer id="reflexns" width=135; height=135;><layer id="reflexns_sub" width=135; height=135; left=0 top=0 bgColor=yellow></layer></ilayer>
+
+<form name="response">
+
+<input type="button" value="  Start  " onClick="startit()" style="font-weight:bold">
+<input type="button" value="  Stop  " onClick="stopTest()" style="font-weight:bold">
+</form>
+</body>
+</html>

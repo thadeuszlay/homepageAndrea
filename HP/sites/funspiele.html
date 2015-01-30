@@ -1,0 +1,76 @@
+<html>
+<head>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var win=null;
+function NewWindow(mypage,myname,w,h,scroll,pos){
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
+win=window.open(mypage,myname,settings);}
+// -->
+</script>
+
+
+
+<SCRIPT LANGUAGE="JavaScript" SRC="AnimatedFader.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+
+/* 
+ * FadingText(divName, numSteps, BGColor)
+ * divName : Must match the DIV names defined at the end of the BODY)
+ * numSteps: The number of steps in the fading transition
+ * BGColor : The background colour of the DIV or document.
+ */
+	FadingText('fade1', 10,"FFFFFF");
+
+/*** The "Frame Interval" Smaller = faster ***/
+	FadeInterval=30;
+
+</SCRIPT>
+<title>
+Funspiele
+</title>
+</head>
+<body background="../pictures/funspiele.jpg" topmargin="0" marginheight="0"  leftmargin="0" marginwidth="0" >
+
+<br><br><br><br><br><br><br><br>
+    
+      <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30%" valign="top" align="left"><!--webbot bot="HTMLMarkup"
+            startspan --><p>
+
+
+
+
+
+<div id="tipDiv" style="position:absolute; visibility:hidden; z-index:100"></div>
+
+<br><p>
+<a href="game.html" onClick="NewWindow(this.href,'','221','253','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Pimboli verteilt Süßigkeiten. Du als Luftschlange musst sie alle aufessen um dadurch größer zu werden.</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="         Snake         "></A>
+<br><p>
+<a href="pong.html" onClick="NewWindow(this.href,'','582','378','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Lust mit Diddl und Co. auf ein Tennis-Spiel auf saftigem Grün?</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="       Tennis           "></a>
+<br><p>
+<a href="reflex.html" onClick="NewWindow(this.href,'','480','340','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Jede körperlich anspruchsvolle Arbeit erfordert ein gesundes Reaktionsvermögen.Hier kannst du überprüfen, ob deine Reflexe gut sind oder nicht.</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="    Reflextester    "></a>
+
+            <br>
+            <font color="#FFFFFF">.</font>
+          </td>
+          <td width="70%" valign="top" align="left"><!--webbot bot="HTMLMarkup" startspan --><script language="JavaScript1.2">
+if (document.layers){
+document.write('<ilayer name="nscontainer" width="100%" height="100">')
+document.write('<layer name="fade1" width="100%" height="100">')
+document.write('</layer></ilayer>')
+}
+else
+document.write('<DIV ID="fade1"></DIV>')
+
+</script>
+
+</body>
+</head>
+

@@ -1,0 +1,279 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+<!--
+
+var win=null;
+function NewWindow(mypage,myname,w,h,scroll,pos){
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
+win=window.open(mypage,myname,settings);}
+// -->
+</script>
+
+<!-- menu -->
+
+<script type="text/javascript">
+
+
+var enablepersist="off" //Enable saving state of content structure using session cookies? (on/off)
+var collapseprevious="yes" //Collapse previously open content when opening present? (yes/no)
+
+if (document.getElementById){
+document.write('<style type="text/css">')
+document.write('.switchcontent{display:none;}')
+document.write('</style>')
+}
+
+function getElementbyClass(classname){
+ccollect=new Array()
+var inc=0
+var alltags=document.all? document.all : document.getElementsByTagName("*")
+for (i=0; i<alltags.length; i++){
+if (alltags[i].className==classname)
+ccollect[inc++]=alltags[i]
+}
+}
+
+function contractcontent(omit){
+var inc=0
+while (ccollect[inc]){
+if (ccollect[inc].id!=omit)
+ccollect[inc].style.display="none"
+inc++
+}
+}
+
+function expandcontent(cid){
+if (typeof ccollect!="undefined"){
+if (collapseprevious=="yes")
+contractcontent(cid)
+document.getElementById(cid).style.display=(document.getElementById(cid).style.display!="block")? "block" : "none"
+}
+}
+
+function revivecontent(){
+contractcontent("omitnothing")
+selectedItem=getselectedItem()
+selectedComponents=selectedItem.split("|")
+for (i=0; i<selectedComponents.length-1; i++)
+document.getElementById(selectedComponents[i]).style.display="block"
+}
+
+function get_cookie(Name) { 
+var search = Name + "="
+var returnvalue = "";
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search)
+if (offset != -1) { 
+offset += search.length
+end = document.cookie.indexOf(";", offset);
+if (end == -1) end = document.cookie.length;
+returnvalue=unescape(document.cookie.substring(offset, end))
+}
+}
+return returnvalue;
+}
+
+function getselectedItem(){
+if (get_cookie(window.location.pathname) != ""){
+selectedItem=get_cookie(window.location.pathname)
+return selectedItem
+}
+else
+return ""
+}
+
+function saveswitchstate(){
+var inc=0, selectedItem=""
+while (ccollect[inc]){
+if (ccollect[inc].style.display=="block")
+selectedItem+=ccollect[inc].id+"|"
+inc++
+}
+
+document.cookie=window.location.pathname+"="+selectedItem
+}
+
+function do_onload(){
+getElementbyClass("switchcontent")
+if (enablepersist=="on" && typeof ccollect!="undefined")
+revivecontent()
+}
+
+
+if (window.addEventListener)
+window.addEventListener("load", do_onload, false)
+else if (window.attachEvent)
+window.attachEvent("onload", do_onload)
+else if (document.getElementById)
+window.onload=do_onload
+
+if (enablepersist=="on" && document.getElementById)
+window.onunload=saveswitchstate
+
+</script>
+
+
+
+
+
+
+
+
+<!--          next menue                -->
+
+
+
+
+
+
+
+
+<style type="text/css">
+.menutitle{
+cursor:pointer;
+margin-bottom: 5px;
+background-color:#99669;
+color:#99669;
+width:280px;
+padding:0px;
+text-align:center;
+font-weight:bold;
+/*/*/border:1px solid #99669;/* */
+}
+
+.submenu{
+margin-bottom: 0.5em;
+}
+</style>
+
+<script type="text/javascript">
+
+
+
+if (document.getElementById){ 
+document.write('<style type="text/css">\n')
+document.write('.submenu{display: none;}\n')
+document.write('</style>\n')
+}
+
+function SwitchMenu(obj){
+	if(document.getElementById){
+	var el = document.getElementById(obj);
+	var ar = document.getElementById("masterdiv").getElementsByTagName("span"); //DynamicDrive.com change
+		if(el.style.display != "block"){ //DynamicDrive.com change
+			for (var i=0; i<ar.length; i++){
+				if (ar[i].className=="submenu") //DynamicDrive.com change
+				ar[i].style.display = "none";
+			}
+			el.style.display = "block";
+		}else{
+			el.style.display = "none";
+		}
+	}
+}
+
+</script>
+<title>
+Start
+</title>
+</head>
+<body background="HP/data/bg.jpg">
+<img src="HP/data/briefmarke.gif"><br>
+<h1><u> Überraschung!</u> :-)</h1>
+Herzlichen Glückwunsch zum Geburtstag! Eine Homepage soll dein Geburtstaggeschenk sein. Aber nicht nur das. Auf dieser CD ist auch Meditationsmusik. Du kannst 
+sie also nicht nur auf dem Computer, sondern auch als normale Musik-CD in einen CD-Player abspielen. Wir hoffen es ist etwas Originelles, das du noch nicht hast und dir 
+noch lange Freude bereitet. Hier gehts los:
+
+
+<h4 onClick="expandcontent('sc1')" style="cursor:hand; cursor:pointer">...direkt zur Homepage</h4>
+<div id="sc1" class="switchcontent">
+
+
+<a href="HP/sites/_index.html" onclick="NewWindow(this.href,'Start','1020','740','no','center');return false" onfocus="this.blur()">*Klick*</a>
+</div>
+
+<h4 onClick="expandcontent('sc2')" style="cursor:hand; cursor:pointer">...zur Bedienungsanleitung</h4>
+<div id="sc2" class="switchcontent">
+<u><h4>Bedieungsanleitung</h4></u>
+Wir haben dir also eine Homepage (HP) gemacht und hoffen, dass die vorliegende kleine Aufmerksamkeit dir ein wenig gefällt. Sie enthält eine Sammlung von Dingen, von denen 
+wir glauben, dass sie dir ein bisschen Freude bereiten und sie soll zudem dazu gedacht sein dich nach einen stressigen Arbeitstag abzulenken. Die HP ist wie folgt 
+gegliedert. Klicke auf die eingerahmten Punkte, um Näheres zu erfahren.<p>
+
+<!-- Keep all menus within masterdiv-->
+<div id="masterdiv">
+<div class="menutitle" onclick="SwitchMenu('sub1')">Startseite</div>
+	<span class="submenu" id="sub1">
+<br>
+Tadaaaaaa:<p>
+<img src="HP/data/startseite.jpg"> <p>
+
+Das ist sie also. Dein Geschenk von uns allen. Ein Geschenk, von den wir alle hoffen, dass du noch lange deine Freude daran haben wirst.<p>
+Doch ein <b> Achtung</b> gleich zu Anfang. Es ist sehr wahrscheinlich, dass der Microsoft Internet Explorer des Öfteren ein Sicherheitshinweis aufblinken lässt.<p>
+<img src="HP/data/sicherheitswarnung_a.jpg"><p>
+Das kommt daher, dass die HP u.a. mit Java-Skript geschrieben wurde, um <u>harmlose</u> dynamische Effekte darstellen zu können. Solltest du diesen Hinweis 
+sehen, kannst du - zumindest hier - unbesorgt <b>immer</b> auf "Geblockte Inhalte zulassen.." und anschließend auf "Ja" drücken, wenn ein solches Fenster 
+anschließend erscheinen sollte:<p>
+<img src="hp/data/sicherheitswarnung_b.jpg"><p> 
+Andernfalls kannst du die dynamischen Effekte leider nicht anschauen. Was sehr schade wäre. Damit du überhaupt diese Dinge sehen kannst, empfiehlt es sich den 
+Microsoft Internet Explorer zu benutzen. Andere Browser stellen die Effekte falsch oder gar nicht dar.<p>
+Wir haben uns also für eine HP mit Diddl-Motiven entschieden, da du Diddl so gerne magst (zumindest hat dein Renault Kangoo uns das wissen lassen ;-). Die HP enthält 
+aber nicht nur viele Diddl Bilder, sondern auch ganz andere Dinge, die dir sicher Freude bereiten. Doch dazu später... .<p>   
+Damit die HP nicht irgendwann ihren Reiz des Neuen verliert (obwohl es viele Sachen enthält, die auch über längere Zeit Spaß machen) ändert sie sich immer, wenn du sie 
+öffnest. <p>
+Da wäre zuerst das "Kopffeld" der Seite zu nennen:<p></span>
+
+
+	
+
+<div class="menutitle" onclick="SwitchMenu('sub2')">Kopffeld</div>
+	<span class="submenu" id="sub2">
+<br>
+	
+So sieht es also aus:<p>
+ <img src="hp/data/kopf.jpg"> <p>
+Sie passt sich immer den Wochentag an, an dem du die Seite öffnest. Würdest du z.B. am Samstag die Seite aufmachen, du würdest den oberen Schriftzug sehen. 
+An einen anderen Tag aber wiederum einen anderen Begrüßungstext, der genau zum entsprechenden Tag passt. 
+Doch damit nicht genug. Kommen wir zum "Hauptfeld" der Seite:<p>
+	</span>
+
+
+	<div class="menutitle" onclick="SwitchMenu('sub3')">Hauptfeld</div>
+	<span class="submenu" id="sub3">
+<br>
+Das Herzstück der HP:<p>
+ <img src="hp/data/haupt.jpg"> <p>
+Jedes Mal wenn du die Seite öffnest, erscheint ein anderes Begrüßungsbild für dich. Es ist vollkommen dem Zufall überlassen welches Bild es ist, 
+so dass du möglichst immer wieder aufs Neue überrascht wirst. <p>
+Kommen wir nun zu den Dingen, die dir Freude bereiten sollen - dem Inhalt der Seite. Auf den Inhalt der Seite, kannst du über das Menüfeld zugreifen: <p>
+	</span>
+
+	<div class="menutitle" onclick="SwitchMenu('sub4')">Menüfeld</div>
+	<span class="submenu" id="sub4">
+<br>	 
+Damit navigierst du in der HP:<p>
+<img src="HP/data/menue.jpg"> <p>
+Die Buttons sind alle animiert. Fahre mal drüber oder klicke eine von den Buttons an und schau was passiert. <p>
+Wenn du im Menüfeld auf <img src="Hp/data/_diddl.gif"> drückst, kommst du auf die Startseite. Jedes Mal wenn die Startseite erscheint, kannst du ein anderes 
+Diddl-Motiv sehen. Es sind über 200 Diddl-Bilder für dich gespeichert - es gibt also viel zu entdecken . :-)<p>
+Bei einen Klick auf <img src="HP/data/_diddlina.gif"> kommst du zu einen ganz besonderen Ort: Neuseeland. Du hast mir ja mal erzählt, dass du gerne dort 
+wärst aber noch nie da warst. Nun gut, ich kann dich leider auch nicht nach Neuseeland bringen, aber dafür bringe ich ein bisschen Neuseeland zu dir. Wir haben die schönsten 
+Motive von Neuseeland für dich ausgesucht und sozusagen "dich" an jenen Ort hinein gesetzt. Du kannst "dich" dort frei bewegen und so den Eindrück näher kommen, du 
+wärst tatsächlich in Neuseeland. Fahre die Maus über "dich" , drücke dann die linke Maustaste. Halte sie gedrückt und du kannst "dich" durch Neuseeland "bewegen". 
+Damit das Ganze noch effektvoller ist, ist die Seite noch mit Sound unterlegt. <p>
+Wenn die Reise nach Neuseeland für dich zu anstrengend sein sollte und du dich lieber bei Spielen entspannen willst, dann haben wir auch dafür gesorgt: Solltest du lieber 
+Funspiele bevorzugen, brauchst du nur auf <img src="HP/data/_mimihopps.gif"> zu klicken. Hier sind ein paar Spiele für Zwischendurch enthalten. Oder bevorzugst
+ du doch lieber Denkspiele? Drück <img src="HP/data/_pimboli.gif"> und du wirst fündig. <p>
+Zu guter Letzt haben wir noch in <img src="HP/data/_galupy.gif"> inspirierende Bilder für dich. Du bist ja Reiki-Spezialistin. Von daher haben wir gedacht, dass dir 
+diese Bilder sicher gefallen werden. Aber schau selbst.  
+
+<a href="HP/sites/_index.html" onclick="NewWindow(this.href,'Start','1020','740','no','center');return false" onfocus="this.blur()">zur HP</a>
+	</span>
+</div>
+</div>
+	<img src="HP/data/diddl.jpg">
+</body>
+</html>

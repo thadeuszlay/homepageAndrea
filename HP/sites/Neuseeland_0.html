@@ -1,0 +1,67 @@
+<html>
+<head>
+<style>
+<!--
+.drag{position:relative;cursor:hand}
+-->
+</style>
+<script language="JavaScript1.2">
+<!--
+
+
+
+var dragapproved=false
+var z,x,y
+function move(){
+if (event.button==1&&dragapproved){
+z.style.pixelLeft=temp1+event.clientX-x
+z.style.pixelTop=temp2+event.clientY-y
+return false
+}
+}
+function drags(){
+if (!document.all)
+return
+if (event.srcElement.className=="drag"){
+dragapproved=true
+z=event.srcElement
+temp1=z.style.pixelLeft
+temp2=z.style.pixelTop
+x=event.clientX
+y=event.clientY
+document.onmousemove=move
+}
+}
+document.onmousedown=drags
+document.onmouseup=new Function("dragapproved=false")
+//-->
+</script>
+<title>
+Neuseeland
+</title>
+</head>
+<body >
+<script language="JavaScript1.2">
+
+
+if (document.all||document.getElementById)
+document.body.style.background="url('../pictures/neuseeland_0.jpg') white center no-repeat fixed"
+
+</script>
+
+<img src="../pictures/du.gif" class="drag"><br>
+<!--
+<b class="drag">"Neuseeland von oben"</b>
+
+-->
+
+<br><br><br><br><br><br><br>
+
+
+
+
+<bgsound src="../sites/n00.wma" id=music loop=200 autostart="true">
+<a href="Neuseeland_20.html"><img src="segelboot_2.gif" border=0 alt="Hier klicken, um zurückzukehren."></a>
+
+</body>
+</html>

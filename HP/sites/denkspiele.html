@@ -1,0 +1,72 @@
+<html>
+<head>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var win=null;
+function NewWindow(mypage,myname,w,h,scroll,pos){
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
+win=window.open(mypage,myname,settings);}
+// -->
+</script>
+
+
+<SCRIPT LANGUAGE="JavaScript" SRC="AnimatedFader.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+
+/* 
+ * FadingText(divName, numSteps, BGColor)
+ * divName : Must match the DIV names defined at the end of the BODY)
+ * numSteps: The number of steps in the fading transition
+ * BGColor : The background colour of the DIV or document.
+ */
+	FadingText('fade1', 10,"FFFFFF");
+
+/*** The "Frame Interval" Smaller = faster ***/
+	FadeInterval=30;
+
+</SCRIPT>
+<title>
+Denkspiele
+</title>
+</head>
+<body background="../pictures/denkspiele.jpg" topmargin="0" marginheight="0"  leftmargin="0" marginwidth="0" >
+
+    <br><br><br><br><br><br><br>
+      <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30%" valign="top" align="left"><!--webbot bot="HTMLMarkup"
+            startspan --><p>
+
+<div id="tipDiv" style="position:absolute; visibility:hidden; z-index:100"></div>
+
+<br><p>
+<a href="tetrisIE.html" onClick="NewWindow(this.href,'','600','540','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Tetris, wer kennt nicht dieses Spiel. Hier aber eine ganz persönliche Version für Andrea Wolf.</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="        Tetris            "></a>
+<br><p>
+<a href="tictactoe.html" onClick="NewWindow(this.href,'','520','438','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Schaffst du es drei deiner Spielsteine in einer Reihe zu platzieren, bevor Pombolli dir zu vor kommt?</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="  Tic Tac Toe     "></a>
+<br><p>
+<a href="jigsaw.html" onClick="NewWindow(this.href,'','550','530','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Ich Schussel habe ein paar Bilder kaputt gemacht. Kannst du sie wieder reparieren?</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="         Puzzle          "></a>
+<br><p>
+<a href="hanoi.html" onClick="NewWindow(this.href,'','690','420','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Kennst du schon den Turm von Hanoi? Versuche alle Scheiben mit so wenigen Zügen wie möglich von einen Turm auf den anderen zu bringen</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="Turm von Hanoi"></a>
+
+<br>
+            <font color="#FFFFFF">.</font>
+          </td>
+          <td width="70%" valign="top" align="left"><!--webbot bot="HTMLMarkup" startspan --><script language="JavaScript1.2">
+if (document.layers){
+document.write('<ilayer name="nscontainer" width="100%" height="100">')
+document.write('<layer name="fade1" width="100%" height="100">')
+document.write('</layer></ilayer>')
+}
+else
+document.write('<DIV ID="fade1"></DIV>')
+
+</script>
+
+</body>
+</head>
+
