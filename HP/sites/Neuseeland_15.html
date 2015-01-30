@@ -5,35 +5,36 @@
 .drag{position:relative;cursor:hand}
 -->
 </style>
-<script language="JavaScript1.2">
+</style>
+<script type="text/javascript">
 <!--
 
-
-
-var dragapproved=false
-var z,x,y
+var dragapproved=false;
+var z,x,y, temp1, temp2;
 function move(){
-if (event.button==1&&dragapproved){
-z.style.pixelLeft=temp1+event.clientX-x
-z.style.pixelTop=temp2+event.clientY-y
-return false
+	if (dragapproved){		
+		z.style.left=parseInt(temp1[0])+event.clientX-x;
+		z.style.top=parseInt(temp2[0])+event.clientY-y;
+		return false
+	}
 }
+function drags(e){
+	if (!document.getElementById){
+		return;
+	}
+	if (event.srcElement.className=="drag"){
+		dragapproved=true;
+		z=event.srcElement;
+		temp1=z.style.left.split("px");
+		temp2=z.style.top.split("px");
+		x=event.clientX;
+		y=event.clientY;
+		document.onmousemove=move;
+	}
 }
-function drags(){
-if (!document.all)
-return
-if (event.srcElement.className=="drag"){
-dragapproved=true
-z=event.srcElement
-temp1=z.style.pixelLeft
-temp2=z.style.pixelTop
-x=event.clientX
-y=event.clientY
-document.onmousemove=move
-}
-}
-document.onmousedown=drags
-document.onmouseup=new Function("dragapproved=false")
+document.onmousedown=drags;
+document.onmouseup=new Function("dragapproved=false");
+
 //-->
 </script>
 <title>
@@ -49,7 +50,7 @@ document.body.style.background="url('../pictures/neuseeland_15.jpg') white cente
 
 </script>
 <br><br><br><br><br><br>
-<img src="../pictures/n15.gif" class="drag"><br>
+<img src="../pictures/n15.gif" class="drag" style="left:0px; top:0px;"><br>
 
 
 <bgsound src="../sites/n15.wma" id=music loop=200 autostart="true">

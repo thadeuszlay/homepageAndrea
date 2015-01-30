@@ -5,11 +5,18 @@
 
 var win=null;
 function NewWindow(mypage,myname,w,h,scroll,pos){
-if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
-if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
-else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
-settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
-win=window.open(mypage,myname,settings);}
+	if(pos=="random"){
+		LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;
+	}
+	if(pos=="center"){
+		LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;
+	}
+	else if((pos!="center" && pos!="random") || pos==null){
+		LeftPosition=0;TopPosition=20;
+	}
+	settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
+	win=window.open(mypage,myname,settings);
+}
 // -->
 </script>
 
@@ -17,107 +24,105 @@ win=window.open(mypage,myname,settings);}
 
 <script type="text/javascript">
 
-var enablepersist="off" //Enable saving state of content structure using session cookies? (on/off)
-var collapseprevious="yes" //Collapse previously open content when opening present? (yes/no)
+var enablepersist="off"; //Enable saving state of content structure using session cookies? (on/off)
+var collapseprevious="yes"; //Collapse previously open content when opening present? (yes/no)
 
 if (document.getElementById){
-document.write('<style type="text/css">')
-document.write('.switchcontent{display:none;}')
-document.write('</style>')
+	document.write('<style type="text/css">');
+	document.write('.switchcontent{display:none;}');
+	document.write('</style>');
 }
 
 function getElementbyClass(classname){
-ccollect=new Array()
-var inc=0
-var alltags=document.all? document.all : document.getElementsByTagName("*")
-for (i=0; i<alltags.length; i++){
-if (alltags[i].className==classname)
-ccollect[inc++]=alltags[i]
-}
-}
+	ccollect=new Array();
+	var inc=0;
+	var alltags=document.all? document.all : document.getElementsByTagName("*");
+	for (i=0; i<alltags.length; i++){
+		if (alltags[i].className==classname)
+			ccollect[inc++]=alltags[i];
+		}
+	}
 
 function contractcontent(omit){
-var inc=0
-while (ccollect[inc]){
-if (ccollect[inc].id!=omit)
-ccollect[inc].style.display="none"
-inc++
-}
+	var inc=0;
+	while (ccollect[inc]){
+		if (ccollect[inc].id!=omit)
+			ccollect[inc].style.display="none";
+		inc++;
+	}
 }
 
 function expandcontent(cid){
-if (typeof ccollect!="undefined"){
-if (collapseprevious=="yes")
-contractcontent(cid)
-document.getElementById(cid).style.display=(document.getElementById(cid).style.display!="block")? "block" : "none"
-}
+	if (typeof ccollect!="undefined"){
+		if (collapseprevious=="yes")
+			contractcontent(cid);
+		document.getElementById(cid).style.display=(document.getElementById(cid).style.display!="block")? "block" : "none";
+	}
 }
 
 function revivecontent(){
-contractcontent("omitnothing")
-selectedItem=getselectedItem()
-selectedComponents=selectedItem.split("|")
-for (i=0; i<selectedComponents.length-1; i++)
-document.getElementById(selectedComponents[i]).style.display="block"
+	contractcontent("omitnothing");
+	selectedItem=getselectedItem();
+	selectedComponents=selectedItem.split("|");
+	for (i=0; i<selectedComponents.length-1; i++)
+		document.getElementById(selectedComponents[i]).style.display="block";
 }
 
 function get_cookie(Name) { 
-var search = Name + "="
-var returnvalue = "";
-if (document.cookie.length > 0) {
-offset = document.cookie.indexOf(search)
-if (offset != -1) { 
-offset += search.length
-end = document.cookie.indexOf(";", offset);
-if (end == -1) end = document.cookie.length;
-returnvalue=unescape(document.cookie.substring(offset, end))
-}
-}
-return returnvalue;
+	var search = Name + "=";
+	var returnvalue = "";
+	if (document.cookie.length > 0) {
+		offset = document.cookie.indexOf(search);
+		if (offset != -1) { 
+			offset += search.length;
+			end = document.cookie.indexOf(";", offset);
+			if (end == -1) end = document.cookie.length;
+			returnvalue=unescape(document.cookie.substring(offset, end));
+		}
+	}
+	return returnvalue;
 }
 
 function getselectedItem(){
-if (get_cookie(window.location.pathname) != ""){
-selectedItem=get_cookie(window.location.pathname)
-return selectedItem
-}
-else
-return ""
+	if (get_cookie(window.location.pathname) != ""){
+		selectedItem=get_cookie(window.location.pathname);
+		return selectedItem;
+	}
+	else
+		return "";
 }
 
 function saveswitchstate(){
-var inc=0, selectedItem=""
-while (ccollect[inc]){
-if (ccollect[inc].style.display=="block")
-selectedItem+=ccollect[inc].id+"|"
-inc++
-}
+	var inc=0, selectedItem=""
+	while (ccollect[inc]){
+		if (ccollect[inc].style.display=="block")
+			selectedItem+=ccollect[inc].id+"|"
+		inc++;
+	}
 
-document.cookie=window.location.pathname+"="+selectedItem
+	document.cookie=window.location.pathname+"="+selectedItem;
 }
 
 function do_onload(){
-getElementbyClass("switchcontent")
-if (enablepersist=="on" && typeof ccollect!="undefined")
-revivecontent()
+	getElementbyClass("switchcontent");
+	if (enablepersist=="on" && typeof ccollect!="undefined")
+		revivecontent();
 }
 
 
 if (window.addEventListener)
-window.addEventListener("load", do_onload, false)
+	window.addEventListener("load", do_onload, false);
 else if (window.attachEvent)
-window.attachEvent("onload", do_onload)
+	window.attachEvent("onload", do_onload);
 else if (document.getElementById)
-window.onload=do_onload
+	window.onload=do_onload;
 
 if (enablepersist=="on" && document.getElementById)
-window.onunload=saveswitchstate
+	window.onunload=saveswitchstate;
 
 </script>
 
-
 <!--          next menue                -->
-
 
 <style type="text/css">
 .menutitle{
@@ -169,10 +174,7 @@ Start
 <body background="HP/data/bg.jpg">
 <img src="HP/data/briefmarke.gif"><br>
 <h1><u> Überraschung!</u> :-)</h1>
-Herzlichen Glückwunsch zum Geburtstag! Eine Homepage soll dein Geburtstaggeschenk sein. Aber nicht nur das. Auf dieser CD ist auch Meditationsmusik. Du kannst 
-sie also nicht nur auf dem Computer, sondern auch als normale Musik-CD in einen CD-Player abspielen. Wir hoffen es ist etwas Originelles, das du noch nicht hast und dir 
-noch lange Freude bereitet. Hier gehts los:
-
+Herzlichen Glückwunsch zum Geburtstag! Eine Homepage soll dein Geburtstaggeschenk sein. Aber nicht nur das. Auf dieser CD ist auch Meditationsmusik. Du kannst sie also nicht nur auf dem Computer, sondern auch als normale Musik-CD in einen CD-Player abspielen. Wir hoffen es ist etwas Originelles, das du noch nicht hast und dir noch lange Freude bereitet. Hier gehts los:
 
 <h4 onClick="expandcontent('sc1')" style="cursor:hand; cursor:pointer">...direkt zur Homepage</h4>
 <div id="sc1" class="switchcontent">

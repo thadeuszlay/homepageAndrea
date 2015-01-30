@@ -219,13 +219,13 @@ randomcontent[199]="random200.html"
 randomcontent[200]="random201.html"
 
 if (ie||dom)
-	document.write('<iframe id="dynstuff" src="" '+iframeprops+'></iframe>')
+document.write('<iframe id="dynstuff" src="" '+iframeprops+'></iframe>')
 
 function random_iframe(){
-	if (ie||dom){
-		var iframeobj=document.getElementById? document.getElementById("dynstuff") : document.all.dynstuff
-		iframeobj.src=randomcontent[Math.floor(Math.random()*randomcontent.length)]
-	}
+if (ie||dom){
+var iframeobj=document.getElementById? document.getElementById("dynstuff") : document.all.dynstuff
+iframeobj.src=randomcontent[Math.floor(Math.random()*randomcontent.length)]
+}
 }
 
 window.onload=random_iframe

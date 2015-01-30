@@ -49,7 +49,7 @@ document.body.style.background="url('../pictures/neuseeland_5.jpg') white center
 
 </script>
 <br>
-<img src="../pictures/n5.gif" class="drag" style="left: 0px; top: 0px;"><br>
+<img src="../pictures/n5.gif" class="drag"><br>
 
 
 <bgsound src="../sites/n05.wma" id=music loop=200 autostart="true">
