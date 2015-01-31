@@ -68,8 +68,8 @@
 	height:15px;
 	z-index=999;
 }
-input[name="Aufschlag"]{
-	position: relative; 
+#Aufschlag{
+	position: absolute; 
 	top:15px; 
 	left:400px;
 	z-index:3;
@@ -96,7 +96,7 @@ input[name="reverse"]{
 	left:400px;
 	z-index:3;
 }
-input[name="Neu"]{
+#Neu{
 	position: absolute; 
 	top:15px; 
 	left:499px;
@@ -156,13 +156,13 @@ input[name="Neu"]{
 	<img id="bordet" src="border3.gif">
 	<img id="bordit" src="border3.gif">
 	<img id="ball" src="ball.gif" />
-	<input name="Aufschlag" type="button" VALUE="Aufschlag" onClick="initialize()" onmousedown="initialize()">
+	<input id="Aufschlag" type="button" VALUE="Aufschlag" onClick="initialize()" onmousedown="initialize()">
 <form name="score">
 	<input type="text" name="box" SIZE="10">
 	<input type="text" name="scorebox" SIZE="10">
 	<input type="text" name="reverse" SIZE="10">
 
-	<input name="Neu" type="button" VALUE="Neu" onClick="startUp()" onmousedown="startUp()">
+	<input id="Neu" type="button" VALUE="Neu" onClick="startUp()" onmousedown="startUp()">
 
 	<div id="myPoints">Deine Punkte:</div>
 	<div id="oppPoints">Punkte des Gegners:</div>
@@ -173,65 +173,86 @@ input[name="Neu"]{
 </form>
 <script type="text/javascript" src="../JS/jQuery.js"></script>
 <script>
-
 window.onerror=new Function("return true");
 var main=function(){
-}
-$(document).ready(main);
 
-var ball;
-var dx;
-var dy;
-var scor = 0;
-var dod;
-var pscor = 0;
-var escor = 0;
-var point;
-var los;
-var reversal = 0;
+/*variables*/
+	var ball=document.getElementById("ball"), 
+	paddleLeft = document.getElementById("paddle"),
+	paddleRight = document.getElementById("enemy"),
+	aufschlagBtn=document.getElementById("Aufschlag"),
+	neuBtn=document.getElementById("Neu");
 
+	var myInterval=0;
+	var dx= dy=0;
+	var dvy=1;
+	var dvx=-1;
+	console.log(aufschlagBtn);
 
-function startUp()
-{
-/*Neu*/
-	ball=document.getElementById("ball");
-	paddleLeft = document.getElementById("paddle");
-	paddleRight = document.getElementById("enemy");
-
-	paddleLeft.style.top="100px";
-	paddleRight.style.top="100px";
+/*addEventListeners*/
+	$("#Neu").click(function(){
+/*init*/
+		paddleLeft.style.top="100px";
+		paddleRight.style.top="100px";
 	
-	ball.style.top="130px";
-	ball.style.left="200px";
+		ball.style.top="130px";
+		ball.style.left="200px";
 
-	score.scorebox.value = " 0 "
-	score.box.value= " 0 "
-	score.reverse.value = " 0 "
-	point = 0;
-	escor = 0;
-	pscor = 0;
-	reversal = 0;
-	goal.style.visibility = "visible";
-	win.style.visibility = "hidden";
-	lose.style.visibility = "hidden";
-}
+		score.scorebox.value = " 0 "
+		score.box.value= " 0 "
+		score.reverse.value = " 0 "
+		point = 0;
+		escor = 0;
+		pscor = 0;
+		reversal = 0;
+		goal.style.visibility = "visible";
+		win.style.visibility = "hidden";
+		lose.style.visibility = "hidden";
 
-function initialize()
-{
-/*Aufschlag*/
-	dx = 2;
-	dy = 2;
-	los = Math.round(21 * Math.random()) + 1;
-	point = 0;
-	hefr = Math.round(200 * Math.random()) + 35;
-	vred = Math.round(100 * Math.random()) + 100;
-	ball.style.top = hefr+"px";
-	ball.style.left = vred+"px";
-	moveBall();
-}
+		clearInterval(myInterval);
+	});
+
+	$("#Aufschlag").click(function(){
+		clearInterval(myInterval);
+		dx = 1+Math.random()*10;
+		dy = 1+Math.random()*10;
+		if (Math.round(Math.random()>.5)){dvy=-1;}
+		else{dvy=1;}
+
+		console.log("dy", dy);
+		myInterval=setInterval(moveBall, 100);
+	});
 
 function moveBall()
 {
+	var xp = ball.style.left.split("px")[0];
+	var yp = ball.style.top.split("px")[0];
+
+	var padLeft=paddleLeft.style.left.split("px")[0];
+	var padRight=paddleRight.style.left.split("px")[0];
+
+	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+"px";
+	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
+
+	console.log("ball.style.left xp: ", ball.style.left);
+	console.log("ball.style.top yp: ", ball.style.top);
+
+	if ((xp>=7) && (xp<=215)){
+		paddle.style.top=(parseInt(yp)-6)+"px";
+	}
+	else{
+		alert("x out!");
+		clearInterval(myInterval);
+	}
+	if ((yp>=5)&&(yp<=265)){
+	
+	}
+	else{
+		alert("y out");
+		clearInterval(myInterval);
+
+	}
+/*
 	var xp = ball.style.left;
 	var yp = ball.style.top;
 	var sig = paddle.style.top;
@@ -292,8 +313,31 @@ function moveBall()
 		ball.style.left += dx
 
 		window.setTimeout("moveBall()", 1, "JavaScript");
-
+*/
 	}
+
+}
+
+$(document).ready(main);
+
+var ball;
+var dx;
+var dy;
+var scor = 0;
+var dod;
+var pscor = 0;
+var escor = 0;
+var point;
+var los;
+var reversal = 0;
+
+
+function startUp()
+{
+/*Neu*/
+
+	
+}
 
 function movePaddle()
 {
