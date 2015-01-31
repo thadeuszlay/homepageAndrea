@@ -176,6 +176,7 @@ input[name="Neu"]{
 
 window.onerror=new Function("return true");
 var main=function(){
+	alert("jQuery!");
 }
 $(document).ready(main);
 
