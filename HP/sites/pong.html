@@ -164,13 +164,13 @@ input[name="reverse"]{
 	<img id="bordet" src="border3.gif">
 	<img id="bordit" src="border3.gif">
 	<img id="ball" src="ball.gif" />
-	<input id="Aufschlag" type="button" VALUE="Aufschlag">
+	<input id="Aufschlag" type="button" value="Aufschlag">
 <form name="score">
 	<input id="myPointsTB" type="text" name="box" SIZE="10" value=" 0 ">
 	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10" value=" 0 ">
 	<input id="reverseTB" type="text" name="reverse" SIZE="10" value=" 0 ">
 
-	<input id="Neu" type="button" VALUE="Neu">
+	<input id="Neu" type="button" value="Neu">
 
 	<div id="myPoints">Deine Punkte:</div>
 	<div id="oppPoints">Punkte des Gegners:</div>
@@ -178,12 +178,13 @@ input[name="reverse"]{
 	<div id="win">Super! Du hast gewonnen! Drücke auf "Neu" für eine neue Partie.</div>
 	<div id="lose">Schade! Du hast verloren. Drücke auf "Neu" für eine Revanche.</div>
 	<div id="goal">Bewege die Maus, um deinen Schläger - der rechte -  zu bedienen. Klicke jedesmal auf "Aufschlag" wenn ein Punkt gemacht wurde. In einem Spiel hast du zehn sog. "Richungsumkehrer" zur Verfügung. Damit kannst du die Richtung des Balls umkehren. Drücke die H-Taste, um den Ball horizontal umzukehren und die V-Taste, um den Ball in vertikaler Richtung umzukehren. Das Spiel ist beendet, sobald ein Spieler 5 Punkte erreicht hat. Drücke auf "Neu", um ein neues Spiel anzufangen. Viel Glück und Spaß, Andrea!</div>
+</div>
 </form>
 <script type="text/javascript" src="../JS/jQuery.js"></script>
 <script>
 window.onerror=new Function("return true");
 var dvx=-1;
-var main=function(){
+function main(){
 
 /*variables*/
 	var ball=document.getElementById("ball"), 
@@ -203,17 +204,17 @@ var main=function(){
 
 	$("#Aufschlag").click(function(){
 		clearInterval(myInterval);
-
-		ball.style.top="130px";
-		ball.style.left="200px";
+		if (!((document.getElementById("myPointsTB").value >4)||(document.getElementById("oppPointsTB").value > 4))){
+			ball.style.top="130px";
+			ball.style.left="200px";
 		
-		dx = 1+Math.random();
-		dy = 1+Math.random();
-		if (Math.round(Math.random()>.5)){dvy=-1;}
-		else{dvy=1;}
-		dvx=-1*dvx;
-		myInterval=setInterval(moveBall, 1);
-	
+			dx = 1+Math.random();
+			dy = 1+Math.random();
+			if (Math.round(Math.random()>.5)){dvy=-1;}
+			else{dvy=1;}
+			dvx=-1*dvx;
+			myInterval=setInterval(moveBall, 1);
+		}
 	});
 function startUp() {
 	/*init*/
@@ -279,13 +280,13 @@ function moveBall()
 			document.getElementById("win").style.visibility="viisble";
 			document.getElementById("lose").style.visibility="hidden";
 			document.getElementById("goal").style.visibility="hidden";	
-			history.go(-1)		
+			history.go(-1);
 		}
 		if (punkteR>4){
 			document.getElementById("win").style.visibility="hidden";
 			document.getElementById("lose").style.visibility="visible";
 			document.getElementById("goal").style.visibility="hidden";	
-			history.go(-1)		
+			history.go(-1);	
 		}
 	}
 	if ((yp>20)&&(yp<265)){

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>
+linkhomepage
+</title>
+</head>
+<body background="../pictures/background_dot_orange.JPG">
+<script language="JavaScript1.2">
+
+var ie=document.all&&navigator.userAgent.indexOf("Opera")==-1
+var dom=document.getElementById&&navigator.userAgent.indexOf("Opera")==-1
+
+//Specify IFRAME display attributes
+var iframeprops='width=1030 height=150 marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"'
+
+//Specify 7 URLs to display inside iframe, one for each day of week
+var daycontent=new Array()
+daycontent[1]="monday.html" //Monday content
+daycontent[2]="tuesday.html" //Tuesday content
+daycontent[3]="wednesday.html"
+daycontent[4]="thursday.html"
+daycontent[5]="friday.html"
+daycontent[6]="saturday.html"
+daycontent[0]="sunday.html"
+
+//No need to edit after here
+if (ie||dom)
+document.write('<iframe id="dynstuff" src="" '+iframeprops+'></iframe>')
+
+var mydate=new Date()
+var mytoday=mydate.getDay()
+
+function dayofweek_iframe(){
+if (ie||dom){
+var iframeobj=document.getElementById? document.getElementById("dynstuff") : document.all.dynstuff
+iframeobj.src=daycontent[mytoday]
+}
+}
+
+window.onload=dayofweek_iframe
+
+</script>
+</body>
+</html>
