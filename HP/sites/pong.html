@@ -2,6 +2,13 @@
 <html>
 <head>
 <style type="text/css" rel="stylesheet">
+html{
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+}
 #court{
 	position: relative;
 }
@@ -146,7 +153,8 @@ input[name="reverse"]{
 }
 </style>
 </head>
-<body background="pong.jpg" onLoad="startUp()" onmousemove="movePaddle()" onKeypress="reverseIt()" text="green">
+<!-- onLoad="startUp()"  onKeypress="reverseIt()"  -->
+<body background="pong.jpg" onmousemove="movePaddle(event)" text="green">
 <div id="court">
 	<img id="border" src="table.gif" >
 	<img id="paddle" src="pad.gif" >
@@ -156,13 +164,13 @@ input[name="reverse"]{
 	<img id="bordet" src="border3.gif">
 	<img id="bordit" src="border3.gif">
 	<img id="ball" src="ball.gif" />
-	<input id="Aufschlag" type="button" VALUE="Aufschlag" onClick="initialize()" onmousedown="initialize()">
+	<input id="Aufschlag" type="button" VALUE="Aufschlag"">
 <form name="score">
 	<input type="text" name="box" SIZE="10">
 	<input type="text" name="scorebox" SIZE="10">
 	<input type="text" name="reverse" SIZE="10">
 
-	<input id="Neu" type="button" VALUE="Neu" onClick="startUp()" onmousedown="startUp()">
+	<input id="Neu" type="button" VALUE="Neu"">
 
 	<div id="myPoints">Deine Punkte:</div>
 	<div id="oppPoints">Punkte des Gegners:</div>
@@ -223,10 +231,12 @@ var main=function(){
 		else{dvy=1;}
 
 		myInterval=setInterval(moveBall, 1);
+	
 	});
 
 function moveBall()
-{
+{	
+
 	var xp = ball.style.left.split("px")[0];
 	var yp = ball.style.top.split("px")[0];
 
@@ -238,44 +248,45 @@ function moveBall()
 
 	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+"px";
 	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
-
+	
 //field
 	if ((xp>20) && (xp<365)){
 	//within field
 		paddle.style.top=(parseInt(yp)-20)+"px";
 	}
 	else{
+	//when touched left/right wall
 		alert("x out!");
 		clearInterval(myInterval);
 	}
 	if ((yp>20)&&(yp<265)){
-	
+	//within field
 	}
 	else{
-		
+		//when touched side walls
 		dvy=-1*dvy;
 
-	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+"px";
-	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+(parseInt(1)*parseInt(dvy))+"px";
-
-//		alert("y out");
-//		clearInterval(myInterval);
+		ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+"px";
+		ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+(parseInt(1)*parseInt(dvy))+"px";
 	}
 //paddle
-	if((xp<=48)&&(yp>paddle.style.top)&& (yp<(parseInt(paddle.style.top)+parseInt(60)))){//&& (yp>paddle.style.top)&& (yp<paddle.style.top+30)){
-			console.log("ball.style.top-- ", ball.style.top);
-		console.log("paddle.style.top-- ", paddle.style.top);	
-					dvx=-1*dvx;
-
-	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+(parseInt(1)*parseInt(dvx))+"px";
-	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
-	
-
+//when toched the left paddle
+	if((xp<=48)&&(yp>paddle.style.top)&& (yp<(parseInt(paddle.style.top)+parseInt(60)))){
+		dvx=-1*dvx;
+		ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+(parseInt(1)*parseInt(dvx))+"px";
+		ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
 	}
 	else{
-		console.log("ball.style.top: ", ball.style.top);
-		console.log("ball.style.left: ", ball.style.left);					
+		//console.log("ball.style.top: ", ball.style.top);
+		//console.log("ball.style.left: ", ball.style.left);					
 	}
+//when toched the right paddle
+	if((xp>330)&&(yp>paddleRight.style.top)&& (yp<(parseInt(paddleRight.style.top)+parseInt(60)))){
+		dvx=-1*dvx;
+		ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+(parseInt(1)*parseInt(dvx))+"px";
+		ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
+	}
+
 
 /*
 
@@ -360,8 +371,17 @@ function moveBall()
 		window.setTimeout("moveBall()", 1, "JavaScript");
 */
 	}
-
 }
+
+function movePaddle(event){
+	
+	var ypos = event.clientY;
+	if(true){
+		console.log("--->", ypos);
+		enemy.style.top = parseInt(ypos-20)+"px";
+	}
+}
+
 
 $(document).ready(main);
 
@@ -377,19 +397,7 @@ var los;
 var reversal = 0;
 
 
-function startUp()
-{
-/*Neu*/
 
-	
-}
-
-function movePaddle()
-{
-var ypos = window.event.y;
-if ((ypos >= 15) && (ypos <= 230))
-enemy.style.posTop = ypos;
-}
 
 function gameLose()
 {
