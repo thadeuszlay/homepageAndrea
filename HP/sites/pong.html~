@@ -153,8 +153,8 @@ input[name="reverse"]{
 }
 </style>
 </head>
-<!-- onLoad="startUp()"  onKeypress="reverseIt()"  -->
-<body background="pong.jpg" onmousemove="movePaddle(event)" text="green">
+<!--   onKeypress="reverseIt()"  -->
+<body background="pong.jpg" onLoad="startUp()" onmousemove="movePaddle(event)" onkeydown="reverseBall(event)" text="green">
 <div id="court">
 	<img id="border" src="table.gif" >
 	<img id="paddle" src="pad.gif" >
@@ -164,13 +164,13 @@ input[name="reverse"]{
 	<img id="bordet" src="border3.gif">
 	<img id="bordit" src="border3.gif">
 	<img id="ball" src="ball.gif" />
-	<input id="Aufschlag" type="button" VALUE="Aufschlag"">
+	<input id="Aufschlag" type="button" VALUE="Aufschlag">
 <form name="score">
-	<input type="text" name="box" SIZE="10">
-	<input type="text" name="scorebox" SIZE="10">
+	<input id="myPointsTB" type="text" name="box" SIZE="10">
+	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10">
 	<input type="text" name="reverse" SIZE="10">
 
-	<input id="Neu" type="button" VALUE="Neu"">
+	<input id="Neu" type="button" VALUE="Neu">
 
 	<div id="myPoints">Deine Punkte:</div>
 	<div id="oppPoints">Punkte des Gegners:</div>
@@ -182,6 +182,7 @@ input[name="reverse"]{
 <script type="text/javascript" src="../JS/jQuery.js"></script>
 <script>
 window.onerror=new Function("return true");
+var dvx=-1;
 var main=function(){
 
 /*variables*/
@@ -194,12 +195,30 @@ var main=function(){
 	var myInterval=0;
 	var dx= dy=0;
 	var dvy=1;
-	var dvx=-1;
+
 	console.log(aufschlagBtn);
 
 /*addEventListeners*/
 	$("#Neu").click(function(){
-/*init*/
+		startUp();
+	});
+
+	$("#Aufschlag").click(function(){
+		clearInterval(myInterval);
+
+		ball.style.top="130px";
+		ball.style.left="200px";
+		
+		dx = 1+Math.random();
+		dy = 1+Math.random();
+		if (Math.round(Math.random()>.5)){dvy=-1;}
+		else{dvy=1;}
+		dvx=-1*dvx;
+		myInterval=setInterval(moveBall, 1);
+	
+	});
+function onStart() {
+	/*init*/
 		paddleLeft.style.left="40px";
 		paddleLeft.style.top="130px";
 
@@ -221,19 +240,8 @@ var main=function(){
 		lose.style.visibility = "hidden";
 
 		clearInterval(myInterval);
-	});
 
-	$("#Aufschlag").click(function(){
-		clearInterval(myInterval);
-		dx = 1+Math.random();
-		dy = 1+Math.random();
-		if (Math.round(Math.random()>.5)){dvy=-1;}
-		else{dvy=1;}
-
-		myInterval=setInterval(moveBall, 1);
-	
-	});
-
+}
 function moveBall()
 {	
 	var xp = ball.style.left.split("px")[0];
@@ -251,7 +259,7 @@ function moveBall()
 //field
 	if ((xp>20) && (xp<365)){
 	//within field
-		if((yp>65) && (yp<290)){
+		if((yp>25) && (yp<250)){
 		//within field
 			paddle.style.top=(parseInt(yp)-20)+"px";
 		}
@@ -260,6 +268,32 @@ function moveBall()
 	//when touched left/right wall
 		alert("x out!");
 		clearInterval(myInterval);
+		var punkteL=document.getElementById("myPointsTB").value;
+		var punkteR=document.getElementById("oppPointsTB").value;
+
+		if (xp>=360){
+			//right player gets point
+			punkteR=parseInt(punkteR)+1;
+			document.getElementById("oppPointsTB").value=String(punkteR);	
+			console.log("spieler R");	
+		}
+		if (xp<=30){	
+			//left player gets point
+			punkteL=parseInt(punkteL)+1;
+			document.getElementById("myPointsTB").value=String(punkteL);	
+			console.log("spieler L");	
+		}
+		
+		if (punkteL>4){
+			document.getElementById("win").style.visibility="viisble";
+			document.getElementById("lose").style.visibility="hidden";
+			document.getElementById("goal").style.visibility="hidden";			
+		}
+		if (punkteR>4){
+			document.getElementById("win").style.visibility="hidden";
+			document.getElementById("lose").style.visibility="visible";
+			document.getElementById("goal").style.visibility="hidden";			
+		}
 	}
 	if ((yp>20)&&(yp<265)){
 	//within field
@@ -288,7 +322,6 @@ function moveBall()
 		ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+(parseInt(1)*parseInt(dvx))+"px";
 		ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
 	}
-
 
 /*
 
@@ -383,8 +416,14 @@ function movePaddle(event){
 	}
 }
 
+function reverseBall(event) {
+	if (event.keyCode===65){
+		dvx=-1*dvx;
+	}		
+}
 
 $(document).ready(main);
+
 
 var ball;
 var dx;
