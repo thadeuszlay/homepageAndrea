@@ -168,7 +168,7 @@ input[name="reverse"]{
 <form name="score">
 	<input id="myPointsTB" type="text" name="box" SIZE="10">
 	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10">
-	<input type="text" name="reverse" SIZE="10">
+	<input id="reverseTB" type="text" name="reverse" SIZE="10">
 
 	<input id="Neu" type="button" VALUE="Neu">
 
@@ -231,10 +231,7 @@ function startUp() {
 		score.scorebox.value = " 0 "
 		score.box.value= " 0 "
 		score.reverse.value = " 0 "
-		point = 0;
-		escor = 0;
-		pscor = 0;
-		reversal = 0;
+
 		goal.style.visibility = "visible";
 		win.style.visibility = "hidden";
 		lose.style.visibility = "hidden";
@@ -323,88 +320,6 @@ function moveBall()
 		ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
 	}
 
-/*
-
-#paddle{
-	position: absolute; 
-	top:30px; 
-	left:40px; 
-	width:15px; 
-	height:60px; 
-	z-index:3;
-}
-#enemy{
-	position: absolute; 
-	top:30px; 
-	left:340px; 
-	width:15px; 
-	height:60px;
-	z-index:3;
-}
-
-*/
-/*
-	var xp = ball.style.left;
-	var yp = ball.style.top;
-	var sig = paddle.style.top;
-	var gis = paddle.style.left;
-	var hit = document.elementFromPoint(xp,yp);
-	var pore = 215
-	var place = pore - 1; 
-
-	if (point < 6)
-	{
-		if ((yp >= 15) && (yp <= 215))
-			paddle.style.posTop = yp - 6;
-		else
-			paddle.style.posTop = place
-		}
-		if (point >= 6)
-		{
-			if ((yp >= 15) && (yp <= 215))
-				paddle.style.posTop = yp + 13;
-			else
-				paddle.style.posTop = place
-		}
-
-		if ((yp < 27) || (yp > 258))
-			dy = dy * -1
-
-		if (point >= 15)
-			paddle.style.posTop = sig
-
-		if (xp >= 358){
-			escor = escor + .5
-			score.scorebox.value = " " +escor+ " "
-			gameLose()
-			return
-		}
-
-		if (xp <= 27)
-		{
-			pscor = pscor + .5
-			score.box.value = " " +pscor+ " "
-			gameWin()
-			return
-		}
-
-
-		if (hit != null)
-		{
-			if (hit.id == "paddle"){
-				dx = dx * -1;
-				point = point + 1
-			}
-			else if (hit.id == "enemy") {
-				dx = dx * -1;
-			}
-		}
-
-		ball.style.top += dy
-		ball.style.left += dx
-
-		window.setTimeout("moveBall()", 1, "JavaScript");
-*/
 	}
 }
 
@@ -418,24 +333,23 @@ function movePaddle(event){
 
 function reverseBall(event) {
 	if (event.keyCode===65){
-		dvx=-1*dvx;
+		var revPtn= document.getElementById("reverseTB").value
+		
+		console.log("revPtn", revPtn);
+		console.log("parseInt(revPtn)<6", parseInt(revPtn)<6);
+		if (parseInt(revPtn)<5){
+			console.log("yes!!");
+			dvx=-1*dvx;
+			revPtn=parseInt(revPtn)+1;
+			document.getElementById("reverseTB").value=String(revPtn);
+		}
+		else{
+			console.log("no!");		
+		}
 	}		
 }
 
 $(document).ready(main);
-
-
-var ball;
-var dx;
-var dy;
-var scor = 0;
-var dod;
-var pscor = 0;
-var escor = 0;
-var point;
-var los;
-var reversal = 0;
-
 
 
 
