@@ -166,9 +166,9 @@ input[name="reverse"]{
 	<img id="ball" src="ball.gif" />
 	<input id="Aufschlag" type="button" VALUE="Aufschlag">
 <form name="score">
-	<input id="myPointsTB" type="text" name="box" SIZE="10">
-	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10">
-	<input id="reverseTB" type="text" name="reverse" SIZE="10">
+	<input id="myPointsTB" type="text" name="box" SIZE="10" value=" 0 ">
+	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10" value=" 0 ">
+	<input id="reverseTB" type="text" name="reverse" SIZE="10" value=" 0 ">
 
 	<input id="Neu" type="button" VALUE="Neu">
 
@@ -195,8 +195,6 @@ var main=function(){
 	var myInterval=0;
 	var dx= dy=0;
 	var dvy=1;
-
-	console.log(aufschlagBtn);
 
 /*addEventListeners*/
 	$("#Neu").click(function(){
@@ -237,7 +235,6 @@ function startUp() {
 		lose.style.visibility = "hidden";
 
 		clearInterval(myInterval);
-
 }
 function moveBall()
 {	
@@ -263,7 +260,6 @@ function moveBall()
 	}
 	else{
 	//when touched left/right wall
-		alert("x out!");
 		clearInterval(myInterval);
 		var punkteL=document.getElementById("myPointsTB").value;
 		var punkteR=document.getElementById("oppPointsTB").value;
@@ -272,24 +268,24 @@ function moveBall()
 			//right player gets point
 			punkteR=parseInt(punkteR)+1;
 			document.getElementById("oppPointsTB").value=String(punkteR);	
-			console.log("spieler R");	
 		}
 		if (xp<=30){	
 			//left player gets point
 			punkteL=parseInt(punkteL)+1;
 			document.getElementById("myPointsTB").value=String(punkteL);	
-			console.log("spieler L");	
 		}
 		
 		if (punkteL>4){
 			document.getElementById("win").style.visibility="viisble";
 			document.getElementById("lose").style.visibility="hidden";
-			document.getElementById("goal").style.visibility="hidden";			
+			document.getElementById("goal").style.visibility="hidden";	
+			history.go(-1)		
 		}
 		if (punkteR>4){
 			document.getElementById("win").style.visibility="hidden";
 			document.getElementById("lose").style.visibility="visible";
-			document.getElementById("goal").style.visibility="hidden";			
+			document.getElementById("goal").style.visibility="hidden";	
+			history.go(-1)		
 		}
 	}
 	if ((yp>20)&&(yp<265)){
@@ -338,62 +334,14 @@ function reverseBall(event) {
 		console.log("revPtn", revPtn);
 		console.log("parseInt(revPtn)<6", parseInt(revPtn)<6);
 		if (parseInt(revPtn)<5){
-			console.log("yes!!");
 			dvx=-1*dvx;
 			revPtn=parseInt(revPtn)+1;
 			document.getElementById("reverseTB").value=String(revPtn);
-		}
-		else{
-			console.log("no!");		
 		}
 	}		
 }
 
 $(document).ready(main);
-
-
-
-function gameLose()
-{
-if (escor >= 5){
-goal.style.visibility = "hidden"
-lose.style.visibility = "visible"
-alert("Schade. Du hast " +pscor+ " zu " +escor+ " verloren.")
-history.go(-1)
-}
-else
-return
-}
-
-function gameWin()
-{
-if (pscor >= 5){
-goal.style.visibility = "hidden"
-win.style.visibility = "visible"
-alert("Juhu! Du hast " +pscor+ " zu " +escor+ " gewonnen.")
-history.go(-1)
-}
-else
-return
-}
-
-function reverseIt()
-{
-if (reversal <= 9)
-{
-if (window.event.keyCode == 118){
-dy = dy * -1
-reversal = reversal + 1
-score.reverse.value = reversal
-}
-if (window.event.keyCode == 104){
-dx = dx * -1
-reversal = reversal + 1
-score.reverse.value = reversal
-}
-}
-}
-
 </script>
 </body>
 </html>

@@ -166,9 +166,9 @@ input[name="reverse"]{
 	<img id="ball" src="ball.gif" />
 	<input id="Aufschlag" type="button" VALUE="Aufschlag">
 <form name="score">
-	<input id="myPointsTB" type="text" name="box" SIZE="10">
-	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10">
-	<input id="reverseTB" type="text" name="reverse" SIZE="10">
+	<input id="myPointsTB" type="text" name="box" SIZE="10" value=" 0 ">
+	<input id="oppPointsTB" type="text" name="scorebox" SIZE="10" value=" 0 ">
+	<input id="reverseTB" type="text" name="reverse" SIZE="10" value=" 0 ">
 
 	<input id="Neu" type="button" VALUE="Neu">
 
@@ -195,8 +195,6 @@ var main=function(){
 	var myInterval=0;
 	var dx= dy=0;
 	var dvy=1;
-
-	console.log(aufschlagBtn);
 
 /*addEventListeners*/
 	$("#Neu").click(function(){
@@ -272,13 +270,11 @@ function moveBall()
 			//right player gets point
 			punkteR=parseInt(punkteR)+1;
 			document.getElementById("oppPointsTB").value=String(punkteR);	
-			console.log("spieler R");	
 		}
 		if (xp<=30){	
 			//left player gets point
 			punkteL=parseInt(punkteL)+1;
 			document.getElementById("myPointsTB").value=String(punkteL);	
-			console.log("spieler L");	
 		}
 		
 		if (punkteL>4){
@@ -337,7 +333,7 @@ function reverseBall(event) {
 		
 		console.log("revPtn", revPtn);
 		console.log("parseInt(revPtn)<6", parseInt(revPtn)<6);
-		if (parseInt(revPtn)<6){
+		if (parseInt(revPtn)<5){
 			console.log("yes!!");
 			dvx=-1*dvx;
 			revPtn=parseInt(revPtn)+1;
