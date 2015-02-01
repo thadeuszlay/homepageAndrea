@@ -236,7 +236,6 @@ var main=function(){
 
 function moveBall()
 {	
-
 	var xp = ball.style.left.split("px")[0];
 	var yp = ball.style.top.split("px")[0];
 
@@ -252,7 +251,10 @@ function moveBall()
 //field
 	if ((xp>20) && (xp<365)){
 	//within field
-		paddle.style.top=(parseInt(yp)-20)+"px";
+		if((yp>65) && (yp<290)){
+		//within field
+			paddle.style.top=(parseInt(yp)-20)+"px";
+		}
 	}
 	else{
 	//when touched left/right wall

@@ -251,7 +251,10 @@ function moveBall()
 //field
 	if ((xp>20) && (xp<365)){
 	//within field
-		paddle.style.top=(parseInt(yp)-20)+"px";
+		if((yp>25) && (yp<250)){
+		//within field
+			paddle.style.top=(parseInt(yp)-20)+"px";
+		}
 	}
 	else{
 	//when touched left/right wall
