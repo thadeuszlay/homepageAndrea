@@ -204,7 +204,7 @@ function main(){
 
 	$("#Aufschlag").click(function(){
 		clearInterval(myInterval);
-		if ((document.getElementById("myPointsTB").value >4)||(document.getElementById("oppPointsTB").value)){
+		if (!((document.getElementById("myPointsTB").value >4)||(document.getElementById("oppPointsTB").value > 4))){
 			ball.style.top="130px";
 			ball.style.left="200px";
 		
