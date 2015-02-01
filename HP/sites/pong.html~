@@ -192,7 +192,10 @@ var main=function(){
 /*addEventListeners*/
 	$("#Neu").click(function(){
 /*init*/
-		paddleLeft.style.top="100px";
+		paddleLeft.style.left="40px";
+		paddleLeft.style.top="130px";
+
+		paddleRight.style.left="340px";		
 		paddleRight.style.top="100px";
 	
 		ball.style.top="130px";
@@ -214,13 +217,12 @@ var main=function(){
 
 	$("#Aufschlag").click(function(){
 		clearInterval(myInterval);
-		dx = 1+Math.random()*10;
-		dy = 1+Math.random()*10;
+		dx = 1+Math.random();
+		dy = 1+Math.random();
 		if (Math.round(Math.random()>.5)){dvy=-1;}
 		else{dvy=1;}
 
-		console.log("dy", dy);
-		myInterval=setInterval(moveBall, 100);
+		myInterval=setInterval(moveBall, 1);
 	});
 
 function moveBall()
@@ -228,30 +230,62 @@ function moveBall()
 	var xp = ball.style.left.split("px")[0];
 	var yp = ball.style.top.split("px")[0];
 
-	var padLeft=paddleLeft.style.left.split("px")[0];
-	var padRight=paddleRight.style.left.split("px")[0];
+	var padLeftX=paddleLeft.style.left.split("px")[0];
+	var padLeftY=paddleLeft.style.top.split("px")[0];
+	
+	var padRightX=paddleRight.style.left.split("px")[0];
+	var padRightY=paddleRight.style.top.split("px")[0];
 
 	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+"px";
 	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
 
-	console.log("ball.style.left xp: ", ball.style.left);
-	console.log("ball.style.top yp: ", ball.style.top);
-
+//field
 	if ((xp>=7) && (xp<=215)){
-		paddle.style.top=(parseInt(yp)-6)+"px";
+	//within field
+//		paddle.style.top=(parseInt(yp)-20)+"px";
 	}
 	else{
 		alert("x out!");
 		clearInterval(myInterval);
 	}
-	if ((yp>=5)&&(yp<=265)){
+	if ((yp>=20)&&(yp<=265)){
 	
 	}
 	else{
-		alert("y out");
-		clearInterval(myInterval);
-
+		dvy=-1*dvy;
+//		alert("y out");
+//		clearInterval(myInterval);
 	}
+//paddle
+	if((xp<=48)){
+		//alert("paddle");
+		//clearInterval(myInterval);			
+	}
+	else{
+		console.log("ball.style.top: ", ball.style.top);
+		console.log("ball.style.left: ", ball.style.left);					
+	}
+
+/*
+
+#paddle{
+	position: absolute; 
+	top:30px; 
+	left:40px; 
+	width:15px; 
+	height:60px; 
+	z-index:3;
+}
+#enemy{
+	position: absolute; 
+	top:30px; 
+	left:340px; 
+	width:15px; 
+	height:60px;
+	z-index:3;
+}
+
+*/
 /*
 	var xp = ball.style.left;
 	var yp = ball.style.top;
