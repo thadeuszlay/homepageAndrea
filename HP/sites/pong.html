@@ -236,7 +236,6 @@ var main=function(){
 
 function moveBall()
 {	
-
 	var xp = ball.style.left.split("px")[0];
 	var yp = ball.style.top.split("px")[0];
 
@@ -376,9 +375,8 @@ function moveBall()
 function movePaddle(event){
 	
 	var ypos = event.clientY;
-	if(true){
-		console.log("--->", ypos);
-		enemy.style.top = parseInt(ypos-20)+"px";
+	if((ypos>45) && (ypos<270)){
+		enemy.style.top = parseInt(ypos-40)+"px";
 	}
 }
 
