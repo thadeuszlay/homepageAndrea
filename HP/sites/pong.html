@@ -240,26 +240,37 @@ function moveBall()
 	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
 
 //field
-	if ((xp>=7) && (xp<=215)){
+	if ((xp>20) && (xp<365)){
 	//within field
-//		paddle.style.top=(parseInt(yp)-20)+"px";
+		paddle.style.top=(parseInt(yp)-20)+"px";
 	}
 	else{
 		alert("x out!");
 		clearInterval(myInterval);
 	}
-	if ((yp>=20)&&(yp<=265)){
+	if ((yp>20)&&(yp<265)){
 	
 	}
 	else{
+		
 		dvy=-1*dvy;
+
+	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+"px";
+	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+(parseInt(1)*parseInt(dvy))+"px";
+
 //		alert("y out");
 //		clearInterval(myInterval);
 	}
 //paddle
-	if((xp<=48)){
-		//alert("paddle");
-		//clearInterval(myInterval);			
+	if((xp<=48)&&(yp>paddle.style.top)&& (yp<(parseInt(paddle.style.top)+parseInt(60)))){//&& (yp>paddle.style.top)&& (yp<paddle.style.top+30)){
+			console.log("ball.style.top-- ", ball.style.top);
+		console.log("paddle.style.top-- ", paddle.style.top);	
+					dvx=-1*dvx;
+
+	ball.style.left=parseInt(xp)+(parseInt(dx)*parseInt(dvx))+(parseInt(1)*parseInt(dvx))+"px";
+	ball.style.top=parseInt(yp)+(parseInt(dy)*parseInt(dvy))+"px";
+	
+
 	}
 	else{
 		console.log("ball.style.top: ", ball.style.top);
