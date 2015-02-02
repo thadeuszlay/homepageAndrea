@@ -1,6 +1,6 @@
 <html>
 <head></head>
-<body background="3.jpg">
+<body background="3.JPG">
 <script language="javascript">
 
 var image1=new Image(); image1.src="ex.gif";

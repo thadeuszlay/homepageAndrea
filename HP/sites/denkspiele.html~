@@ -15,7 +15,6 @@ win=window.open(mypage,myname,settings);}
 </script>
 
 
-
 <SCRIPT LANGUAGE="JavaScript" SRC="AnimatedFader.js"></SCRIPT>
 <SCRIPT LANGUAGE="JavaScript">
 
@@ -32,31 +31,29 @@ win=window.open(mypage,myname,settings);}
 
 </SCRIPT>
 <title>
-Funspiele
+Denkspiele
 </title>
 </head>
-<body background="../pictures/funspiele.jpg" topmargin="0" marginheight="0"  leftmargin="0" marginwidth="0" >
+<body background="../pictures/denkspiele.jpg" topmargin="0" marginheight="0"  leftmargin="0" marginwidth="0" >
 
-<br><br><br><br><br><br><br><br>
-    
+    <br><br><br><br><br><br><br>
       <table border="0" width="100%" cellspacing="0" cellpadding="0">
         <tr>
           <td width="30%" valign="top" align="left"><!--webbot bot="HTMLMarkup"
             startspan --><p>
 
-
-
-
-
 <div id="tipDiv" style="position:absolute; visibility:hidden; z-index:100"></div>
 
-
 <br><p>
-<a href="pong.html" onClick="NewWindow(this.href,'','400','260','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Lust mit Diddl und Co. auf ein Tennis-Spiel auf saftigem Grün?</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="       Tennis           "></a>
+<a href="tetrisIE.html" onClick="NewWindow(this.href,'','600','540','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Tetris, wer kennt nicht dieses Spiel. Hier aber eine ganz persönliche Version für Andrea Wolf.</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="        Tetris            "></a>
 <br><p>
-<a href="reflex.html" onClick="NewWindow(this.href,'','480','340','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Jede körperlich anspruchsvolle Arbeit erfordert ein gesundes Reaktionsvermögen.Hier kannst du überprüfen, ob deine Reflexe gut sind oder nicht.</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="    Reflextester    "></a>
+<a href="tictactoe.html" onClick="NewWindow(this.href,'','520','438','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Schaffst du es drei deiner Spielsteine in einer Reihe zu platzieren, bevor Pombolli dir zu vor kommt?</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="  Tic Tac Toe     "></a>
+<br><p>
+<a href="jigsaw.html" onClick="NewWindow(this.href,'','550','530','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Ich Schussel habe ein paar Bilder kaputt gemacht. Kannst du sie wieder reparieren?</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="         Puzzle          "></a>
+<br><p>
+<a href="hanoi.html" onClick="NewWindow(this.href,'','690','420','no','center');return false" onMouseOver="fade_up('fade1','<FONT SIZE=4 FACE=Verdana>Kennst du schon den Turm von Hanoi? Versuche alle Scheiben mit so wenigen Zügen wie möglich von einen Turm auf den anderen zu bringen</FONT>','000000')" onMouseOut="fade_down('fade1')"><input type=button onclick="level=1;startIt()" value="Turm von Hanoi"></a>
 
-            <br>
+<br>
             <font color="#FFFFFF">.</font>
           </td>
           <td width="70%" valign="top" align="left"><!--webbot bot="HTMLMarkup" startspan --><script language="JavaScript1.2">
