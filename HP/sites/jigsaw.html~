@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <HTML>
 <HEAD>
 	<TITLE>Puzzle</TITLE>
 </HEAD>
-<BODY  bgcolor=#333333 onload="Carousel()" onLoad="checkit()">
+<BODY  bgcolor=#FF6699 onload="Carousel()" onLoad="checkit()">
 <script type="text/javascript" >
 <!--
-var temp = new Image();
-var loc;
-var gotit;
+var temp = new Image()
+var loc
+var gotit
 function checkit()
 {
         if ((navigator.appName=="Microsoft Internet Explorer")
@@ -20,8 +21,6 @@ function exch()
 {
         if ((event.button == 1) && (event.srcElement.className == "drag"))
         {
-console.log("in hier");
-
                  if (gotit == 1)
                 {
                         gotit = 0
@@ -36,29 +35,30 @@ console.log("in hier");
                 }
         }
 }
-document.onmousedown=exch;
+document.onmousedown=exch
+// -->
 </SCRIPT>
 <CENTER>
 <NOSCRIPT>Um zu spielen, brauchst du IE4 oder höher.
 </NOSCRIPT>
-<TABLE CELLPADDING="0" CELLSPACING="0" BORDER="0" STYLE="border:22px ridge #333333">
+<TABLE CELLPADDING="0" CELLSPACING="0" BORDER="0" STYLE="border:22px ridge #FF6699">
 <TR>
-<TD><IMG SRC="c9.gif" WIDTH="120" HEIGHT="112" NAME="pic11" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c4.gif" WIDTH="120" HEIGHT="112" NAME="pic12" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c6.gif" WIDTH="120" HEIGHT="112" NAME="pic13" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c1.gif" WIDTH="120" HEIGHT="112" NAME="pic14" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="9.gif" WIDTH="120" HEIGHT="112" NAME="pic11" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="4.gif" WIDTH="120" HEIGHT="112" NAME="pic12" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="6.gif" WIDTH="120" HEIGHT="112" NAME="pic13" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="1.gif" WIDTH="120" HEIGHT="112" NAME="pic14" CLASS="drag" ALT=""></TD>
 </TR>
 <TR>
-<TD><IMG SRC="c7.gif" WIDTH="120" HEIGHT="112" NAME="pic21" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c10.gif" WIDTH="120" HEIGHT="112" NAME="pic22" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c2.gif" WIDTH="120" HEIGHT="112"  NAME="pic23" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c12.gif" WIDTH="120" HEIGHT="112" NAME="pic24" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="7.gif" WIDTH="120" HEIGHT="112" NAME="pic21" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="10.gif" WIDTH="120" HEIGHT="112" NAME="pic22" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="2.gif" WIDTH="120" HEIGHT="112"  NAME="pic23" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="12.gif" WIDTH="120" HEIGHT="112" NAME="pic24" CLASS="drag" ALT=""></TD>
 </TR>
 <TR>
-<TD><IMG SRC="c3.gif" WIDTH="120" HEIGHT="112" NAME="pic31" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c5.gif" WIDTH="120" HEIGHT="112" NAME="pic32" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c11.gif" WIDTH="120" HEIGHT="112" NAME="pic33" CLASS="drag" ALT=""></TD>
-<TD><IMG SRC="c8.gif" WIDTH="120" HEIGHT="112" NAME="pic34" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="3.gif" WIDTH="120" HEIGHT="112" NAME="pic31" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="5.gif" WIDTH="120" HEIGHT="112" NAME="pic32" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="11.gif" WIDTH="120" HEIGHT="112" NAME="pic33" CLASS="drag" ALT=""></TD>
+<TD><IMG SRC="8.gif" WIDTH="120" HEIGHT="112" NAME="pic34" CLASS="drag" ALT=""></TD>
 </TR>
 </TABLE>
 
@@ -99,13 +99,12 @@ document.onmousedown=exch;
  If Link is not needed keep it ""
 */
 	Car_Image_Sources=new Array(
-		"aw.jpg","jigsaw_aw.html",
 		"geburtstag.jpg","jigsaw.html",
-		"e.jpg","jigsaw_e.html",
+		"aw.jpg","jigsaw_aw.html",
 		"spiel.jpg","jigsaw_spiel.html",
 		"f.jpg","jigsaw_f.html",
-		"geschenk.jpg","jigsaw_geschenk.html"
-		 // NOTE No comma after last line
+		"geschenk.jpg","jigsaw_geschenk.html",
+		"e.jpg","jigsaw_e.html" // NOTE No comma after last line
 		);
 
 /***************** fix **********************************/

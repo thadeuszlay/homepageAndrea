@@ -18,10 +18,9 @@ function checkit()
 }
 function exch()
 {
+console.log("echo");
         if ((event.button == 1) && (event.srcElement.className == "drag"))
         {
-console.log("in hier");
-
                  if (gotit == 1)
                 {
                         gotit = 0

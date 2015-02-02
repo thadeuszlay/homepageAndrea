@@ -223,7 +223,7 @@ doter.src="dot.gif"
 				eval("document.all.dot"+turn+".style.pixelTop=-100");
 			}
 			function showscore(){
-				S+=add;parent.score.document.write("<body bgcolor=000000 text=#C97ABD><center><font face=Verdana  size=2><strong>Punkte "+S+"</font></strong></center>");file:///home/think/Git/homepageAndrea/HP/sites/game.html
+				S+=add;parent.score.document.write("<body bgcolor=000000 text=#C97ABD><center><font face=Verdana  size=2><strong>Punkte "+S+"</font></strong></center>");
 				parent.score.document.close();
 			}
 			function cantplay(){
