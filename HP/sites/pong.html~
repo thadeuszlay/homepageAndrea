@@ -277,7 +277,7 @@ function moveBall()
 		}
 		
 		if (punkteL>4){
-			document.getElementById("win").style.visibility="viisble";
+			document.getElementById("win").style.visibility="visible";
 			document.getElementById("lose").style.visibility="hidden";
 			document.getElementById("goal").style.visibility="hidden";	
 			history.go(-1);
